@@ -18,10 +18,10 @@ public class UserController {
     public User getUser(@PathVariable("userId") String userId){
         User user1 = new User(userId,"UserName"+userId,"userPhoneNumber"+userId);
 
-        Posts posts = restTemplate.getForObject("http://localhost:8081/post/1",Posts.class);
+        Posts posts = restTemplate.getForObject("http://post-service/post/1",Posts.class);
         user1.setPosts(posts);
 
-        Notifications notifications = restTemplate.getForObject("http://localhost:8080/notifications/1", Notifications.class);
+        Notifications notifications = restTemplate.getForObject("http://notification-service/notifications/1", Notifications.class);
         user1.setNotifications(notifications);
 
         return  user1;
